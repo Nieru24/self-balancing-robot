@@ -46,12 +46,12 @@
 
 // TODO: REPLACE WITH YOUR MPU6050 CALIBRATION RESULTS
 const CalibrationOffsets MPU6050_CALIBRATION = {
-    .accelX = 0,      // Replace with your accel X offset
-    .accelY = 0,      // Replace with your accel Y offset
-    .accelZ = 0,      // Replace with your accel Z offset (gravity already removed)
-    .gyroX  = 0,      // Replace with your gyro X offset
-    .gyroY  = 0,      // Replace with your gyro Y offset
-    .gyroZ  = 0       // Replace with your gyro Z offset
+    .accelX =  -1060,
+    .accelY =    251,
+    .accelZ =   -326,
+    .gyroX  =    -69,
+    .gyroY  =   -259,
+    .gyroZ  =   -194
 };
 
 // ============================================================================
@@ -78,23 +78,23 @@ constexpr float MOTOR_B_MAX_RPM = 172.0f;  // Replace with your measured max RPM
 // ============================================================================
 
 // ----- TB6612FNG Motor A (Right motor) -----
-constexpr uint8_t PIN_PWM_A    = 18;   // PWMA (PWM output)
-constexpr uint8_t PIN_IN1_A    = 16;   // AIN1 (Direction)
-constexpr uint8_t PIN_IN2_A    = 17;   // AIN2 (Direction)
+constexpr uint8_t PIN_PWM_A    = 32;   // PWMA (PWM output)
+constexpr uint8_t PIN_IN1_A    = 25;   // AIN1 (Direction)
+constexpr uint8_t PIN_IN2_A    = 26;   // AIN2 (Direction)
 
 // ----- TB6612FNG Motor B (Left motor) -----
-constexpr uint8_t PIN_PWM_B    = 19;   // PWMB (PWM output)
-constexpr uint8_t PIN_IN1_B    = 21;   // BIN1 (Direction)
-constexpr uint8_t PIN_IN2_B    = 22;   // BIN2 (Direction)
+constexpr uint8_t PIN_PWM_B    = 33;   // PWMB (PWM output)
+constexpr uint8_t PIN_IN1_B    = 27;   // BIN1 (Direction)
+constexpr uint8_t PIN_IN2_B    = 26;   // BIN2 (Direction)
 
 // ----- JGB37-520 Encoder connections -----
-constexpr uint8_t PIN_ENC_A_A  = 34;   // Motor A Encoder Channel A (Yellow wire - 11 PPR)
+constexpr uint8_t PIN_ENC_A_A  = 33;   // Motor A Encoder Channel A (Yellow wire - 11 PPR)
 constexpr uint8_t PIN_ENC_A_B  = 35;   // Motor A Encoder Channel B (Green wire)
-constexpr uint8_t PIN_ENC_B_A  = 32;   // Motor B Encoder Channel A (Yellow wire - 11 PPR)
-constexpr uint8_t PIN_ENC_B_B  = 33;   // Motor B Encoder Channel B (Green wire)
+constexpr uint8_t PIN_ENC_B_A  = 36;   // Motor B Encoder Channel A (Yellow wire - 11 PPR)
+constexpr uint8_t PIN_ENC_B_B  = 39;   // Motor B Encoder Channel B (Green wire)
 
 // ----- Shared control -----
-constexpr uint8_t PIN_STBY     = 4;    // Standby pin (active HIGH)
+constexpr uint8_t PIN_STBY     = 13;    // Standby pin (active HIGH)
 
 // ----- MPU6050 I2C -----
 constexpr uint8_t PIN_I2C_SDA  = 21;   // I2C SDA
@@ -109,12 +109,12 @@ constexpr uint8_t PIN_LED_BUILTIN = 2;   // Built-in LED on ESP32 dev boards
 
 // ----- PID tuning constants (adjust these for your robot) -----
 // Start with P-only, then add D to dampen oscillations, finally I to eliminate drift
-constexpr float PID_KP = 25.0f;   // Proportional gain (core balancing)
-constexpr float PID_KI = 0.5f;    // Integral gain (eliminate steady-state error)
-constexpr float PID_KD = 1.2f;    // Derivative gain (dampen oscillations)
+constexpr float PID_KP = 450.0f;   // Proportional gain (core balancing)
+constexpr float PID_KI = 100.5f;    // Integral gain (eliminate steady-state error)
+constexpr float PID_KD = 4.0f;    // Derivative gain (dampen oscillations)
 
 // ----- Control loop timing -----
-constexpr uint32_t CONTROL_LOOP_INTERVAL_US = 10000; // 10,000 µs = 100 Hz
+constexpr uint32_t CONTROL_LOOP_INTERVAL_US = 4000; // 10,000 µs = 100 Hz
 
 // ----- Safety limits -----
 constexpr float MAX_TILT_ANGLE_DEG = 45.0f;   // Disable motors if tilt exceeds ±45°
